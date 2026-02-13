@@ -11,4 +11,9 @@ export type Product = {
   purpose: string;
   category: string;
   type: string;
+
+  moodId?: string;
+  purposeId?: string;
+  categoryId?: string;
+  wineTypeId?: string;
 };

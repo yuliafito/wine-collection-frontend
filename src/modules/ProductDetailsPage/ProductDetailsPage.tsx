@@ -26,9 +26,9 @@ export const ProductDetailsPage = () => {
   const navigate = useNavigate();
 
   const { products: recommended, loading: recLoading } = useRecommendedProducts({
-    category: product?.category,
-    wine_type: product?.type,
-    mood: product?.mood,
+    category: product?.categoryId,
+    wine_type: product?.wineTypeId,
+    mood: product?.moodId,
     excludeId: product?.id,
   });
 

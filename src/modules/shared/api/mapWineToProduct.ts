@@ -15,6 +15,11 @@ export const mapWineListItemToProduct = (wine: WineListItemApi): Product => ({
   mood: 'romantic',
   purpose: 'celebration',
 
+  categoryId: undefined,
+  wineTypeId: undefined,
+  moodId: undefined,
+  purposeId: undefined,
+
   inStock: true,
 });
 
@@ -37,4 +42,9 @@ export const mapWineToProduct = (wine: WineApi): Product => ({
   mood: wine.moods?.[0]?.name?.toLowerCase() ?? '',
 
   purpose: wine.purpose?.name?.toLowerCase()?.replace(/\s+/g, ' ') ?? '',
+
+  categoryId: wine.category ? String(wine.category.id) : undefined,
+  wineTypeId: wine.wine_type ? String(wine.wine_type.id) : undefined,
+  moodId: wine.moods?.[0] ? String(wine.moods[0].id) : undefined,
+  purposeId: wine.purpose ? String(wine.purpose.id) : undefined,
 });
