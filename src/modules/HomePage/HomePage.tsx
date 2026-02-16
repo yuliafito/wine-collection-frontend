@@ -5,10 +5,13 @@ import { HomeHero } from './components/HomeHero';
 import { ProductSlider } from './components/ProductSlider';
 
 import styles from './HomePage.module.scss';
+import { usePurposeByName } from '../shared/hooks/usePurposeByName';
 
 export const HomePage = () => {
+  const giftPurposeId = usePurposeByName('На Подарунок');
+
   const { products, loading } = useFeaturedProducts({
-    purpose: '1',
+    purpose: giftPurposeId,
     limit: 6,
   });
 
@@ -21,7 +24,7 @@ export const HomePage = () => {
 
         {!loading && products.length > 0 && (
           <div className={styles['home__slider-wrapper']}>
-            <ProductSlider products={products} header="Святкові вина" />
+            <ProductSlider products={products} header="Вина на подарунок" />
           </div>
         )}
 
