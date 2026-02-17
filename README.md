@@ -5,6 +5,9 @@ The goal of the project is to create a **virtual sommelier** that helps users ex
 
 The application is designed to make wine selection simple and enjoyable, whether the user is choosing a bottle for a gift, a celebration, or a casual evening.
 
+## 🌐 Live Demo
+The application is available online:
+👉 https://wine-collection-frontend.onrender.com/
 
 ## 🖥 Technologies Used
 
@@ -18,12 +21,12 @@ The application is designed to make wine selection simple and enjoyable, whether
 - **React Router DOM** - Client-side routing
 - **Swiper** - Sliders for featured and festive wine collections
 
-### Development
+### Development & Deployment
 - **Vite** - Build tool
 - **ESLint** - Code quality
 - **Prettier** - Code formatting
 - **Husky** - Git hooks for code quality enforcement
-
+- **Render** - Hosting and deployment
 
 
 ## 🚀 Getting Started
