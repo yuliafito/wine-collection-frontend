@@ -1,11 +1,4 @@
 import { useEffect, useState } from 'react';
-import {
-  moodsMock,
-  purposesMock,
-  categoriesMock,
-  countriesMock,
-  wineTypesMock,
-} from '../mocks/filters';
 import { getMoods, getPurposes, getCategories, getCountries, getWineTypes } from '../api/filters';
 import type { FilterItem } from '../../../types/FilterItem';
 
@@ -19,21 +12,30 @@ export const useFilters = () => {
   const [wineTypes, setWineTypes] = useState<FilterItem[]>([]);
 
   useEffect(() => {
-    Promise.all([
-      getMoods().catch(() => moodsMock),
-      getPurposes().catch(() => purposesMock),
-      getCategories().catch(() => categoriesMock),
-      getCountries().catch(() => countriesMock),
-      getWineTypes().catch(() => wineTypesMock),
-    ])
-      .then(([moods, purposes, categories, countries, wineTypes]) => {
-        setMoods(moods);
-        setPurposes(purposes);
-        setCategories(categories);
-        setCountries(countries);
-        setWineTypes(wineTypes);
-      })
-      .finally(() => setLoading(false));
+    const fetchFilters = async () => {
+      try {
+        const [moodsData, purposesData, categoriesData, countriesData, wineTypesData] =
+          await Promise.all([
+            getMoods(),
+            getPurposes(),
+            getCategories(),
+            getCountries(),
+            getWineTypes(),
+          ]);
+
+        setMoods(moodsData);
+        setPurposes(purposesData);
+        setCategories(categoriesData);
+        setCountries(countriesData);
+        setWineTypes(wineTypesData);
+      } catch (error) {
+        console.error('Failed to load filters:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFilters();
   }, []);
 
   return {

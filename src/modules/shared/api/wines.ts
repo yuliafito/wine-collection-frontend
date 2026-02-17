@@ -2,22 +2,10 @@ import type { Product } from '../../../types/Product';
 import type { ProductsParams } from '../../../types/ProductsParams';
 import type { ProductsResponse } from '../../../types/ProductsResponse';
 import type { WineApi, WinesListApiResponse } from '../../../types/WineApi';
-import { wineDetailsMock, winesListMock } from '../mocks/wines';
 import { request } from './http';
 import { mapWineListItemToProduct, mapWineToProduct } from './mapWineToProduct';
 
-const USE_MOCKS = false;
-
 export const getWines = async (params: ProductsParams): Promise<ProductsResponse> => {
-  if (USE_MOCKS) {
-    const products = winesListMock.results.map(mapWineListItemToProduct);
-
-    return {
-      products: products.slice(0, Number(params.perPage || 6)),
-      total: products.length,
-    };
-  }
-
   let ordering = 'price';
 
   if (params.sort === 'price_asc') ordering = 'price';
@@ -54,12 +42,6 @@ export const getWines = async (params: ProductsParams): Promise<ProductsResponse
 };
 
 export const getWineById = async (id: number): Promise<Product> => {
-  if (USE_MOCKS) {
-    const wine = wineDetailsMock[id];
-    if (!wine) throw new Error('Not found');
-    return mapWineToProduct(wine);
-  }
-
   const data = await request<WineApi>(`/wines/${id}/`);
   return mapWineToProduct(data);
 };

@@ -1,14 +1,6 @@
 import { request } from './http';
 import { getCartId, setCartId, clearCartId } from '../utils/cart';
 
-import {
-  getCartMock,
-  addToCartMock,
-  updateQuantityMock,
-  removeOneMock,
-  clearCartMock,
-} from '../mocks/cartApi';
-
 export type CartItemApi = {
   id: number;
   wine_id: number;
@@ -31,13 +23,7 @@ type AddToCartBody = {
   cart_id?: string;
 };
 
-const USE_MOCKS = false;
-
 export const getCartApi = async (): Promise<CartApiResponse> => {
-  if (USE_MOCKS) {
-    return getCartMock();
-  }
-
   const cartId = getCartId();
   const query = cartId ? `?cart_id=${cartId}` : '';
 
@@ -51,10 +37,6 @@ export const getCartApi = async (): Promise<CartApiResponse> => {
 };
 
 export const addToCartApi = async (wine: number, quantity = 1): Promise<CartApiResponse> => {
-  if (USE_MOCKS) {
-    return addToCartMock(wine, quantity);
-  }
-
   const cartId = getCartId();
 
   const body: AddToCartBody = { wine, quantity, ...(cartId ? { cart_id: cartId } : {}) };
@@ -73,11 +55,8 @@ export const updateQuantityApi = async (
   wine_id: number,
   quantity: number,
 ): Promise<CartApiResponse> => {
-  if (USE_MOCKS) {
-    return updateQuantityMock(wine_id, quantity);
-  }
-
   const cartId = getCartId();
+
   if (!cartId) {
     throw new Error('No cart id');
   }
@@ -93,11 +72,8 @@ export const updateQuantityApi = async (
 };
 
 export const removeOneApi = async (wine_id: number): Promise<CartApiResponse> => {
-  if (USE_MOCKS) {
-    return removeOneMock(wine_id);
-  }
-
   const cartId = getCartId();
+
   if (!cartId) {
     throw new Error('No cart id');
   }
@@ -108,11 +84,8 @@ export const removeOneApi = async (wine_id: number): Promise<CartApiResponse> =>
 };
 
 export const clearCartApi = async (): Promise<void> => {
-  if (USE_MOCKS) {
-    return clearCartMock();
-  }
-
   const cartId = getCartId();
+
   if (!cartId) return;
 
   await request(`/cart/clear/?cart_id=${cartId}`, {
@@ -123,9 +96,8 @@ export const clearCartApi = async (): Promise<void> => {
 };
 
 export const mergeCartApi = async (): Promise<void> => {
-  if (USE_MOCKS) return;
-
   const cartId = getCartId();
+
   if (!cartId) return;
 
   await request('/cart/merge_unauthorized_cart_to_user/', {
