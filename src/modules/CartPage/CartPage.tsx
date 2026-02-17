@@ -6,9 +6,11 @@ import { Back } from '../shared/components/Back';
 import { CartProduct } from './components/CartProduct';
 
 import styles from './CartPage.module.scss';
+import { Loader } from '../shared/components/Loader';
+import { PageState } from '../shared/components/PageState';
 
 export const CartPage = () => {
-  const { cart, totalPrice, clearCart } = useCart();
+  const { cart, totalPrice, clearCart, loading, error } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -36,6 +38,18 @@ export const CartPage = () => {
   };
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  if (loading) return <Loader />;
+
+  if (error) {
+    return (
+      <PageState
+        type="error"
+        message="Не вдалося завантажити кошик"
+        onReload={() => window.location.reload()}
+      />
+    );
+  }
 
   return (
     <section className={styles.cart}>

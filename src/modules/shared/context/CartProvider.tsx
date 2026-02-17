@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Loader } from '../components/Loader';
 import { CartContext, type CartItem } from '../context/CartContext';
 import {
   getCartApi,
@@ -31,6 +30,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const init = async () => {
+      setError(false);
+
       try {
         const data = await getCartApi();
         syncCart(data);
@@ -83,25 +84,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const isInCart = (productId: number) => cart.some((item) => item.itemId === productId);
 
-  if (loading) return <Loader />;
-
-  if (error) console.warn('Cart error state');
-
-  // if (error) {
-  //   return (
-  //     <PageState
-  //       type="error"
-  //       message="Щось пішло не так"
-  //       onReload={() => window.location.reload()}
-  //     />
-  //   );
-  // }
-
   return (
     <CartContext.Provider
       value={{
         cart,
         totalPrice,
+        loading,
+        error,
         addToCart,
         removeItemCompletely,
         removeOne,

@@ -11,6 +11,9 @@ export type CartItem = {
 export type CartContextType = {
   cart: CartItem[];
   totalPrice: number;
+  loading: boolean;
+  error: boolean;
+
   addToCart: (productId: number, quantity?: number) => Promise<void>;
   removeItemCompletely: (productId: number) => Promise<void>;
   removeOne: (productId: number) => Promise<void>;

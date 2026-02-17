@@ -49,7 +49,8 @@ export const ProductsPage = () => {
 
   const productsParams = useMemo(() => buildProductsParams(searchParams), [searchParams]);
 
-  const { products, total, loading: productsLoading } = useProducts(productsParams);
+  const { products, total, loading: productsLoading, error } = useProducts(productsParams);
+
   const {
     moods,
     purposes,
@@ -160,15 +161,15 @@ export const ProductsPage = () => {
     return <Loader />;
   }
 
-  // if (error) {
-  //   return (
-  //     <PageState
-  //       type="error"
-  //       message="Щось пішло не так"
-  //       onReload={() => window.location.reload()}
-  //     />
-  //   );
-  // }
+  if (error) {
+    return (
+      <PageState
+        type="error"
+        message="Щось пішло не так"
+        onReload={() => window.location.reload()}
+      />
+    );
+  }
 
   const hasQuery = Boolean(searchParams.get('query'));
   const hasFilters =
