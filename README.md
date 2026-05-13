@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# 🍷 Wine Collection - Virtual Sommelier Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Wine Collection** is a team project that represents a modern web application for a Ukrainian wine hypermarket.  
+The goal of the project is to create a **virtual sommelier** that helps users explore a wine catalog, search and filter wines by different parameters, and add selected items to a shopping cart.
 
-Currently, two official plugins are available:
+The application is designed to make wine selection simple and enjoyable, whether the user is choosing a bottle for a gift, a celebration, or a casual evening.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
+The application is available online:
+👉 https://wine-collection-frontend.onrender.com/
 
-## React Compiler
+## 🖥 Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Core
+- **React** - UI framework
+- **TypeScript** - Type safety
+- **SCSS Modules** - Styling
+- **MUI** - UI components
 
-## Expanding the ESLint configuration
+### UI/UX
+- **React Router DOM** - Client-side routing
+- **Swiper** - Sliders for featured and festive wine collections
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Development & Deployment
+- **Vite** - Build tool
+- **ESLint** - Code quality
+- **Prettier** - Code formatting
+- **Husky** - Git hooks for code quality enforcement
+- **Render** - Hosting and deployment
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Follow these steps to run the project locally:
+
+### 1️⃣ Clone the repository:
+```bash
+git clone https://github.com/yuliafito/wine-collection-frontend.git
+cd wine-collection-frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2️⃣ Install dependencies:
+```bash
+npm install
 ```
+
+### 3️⃣ Run the project locally:
+```bash
+npm run dev
+```
+
+
+## ✨ Features
+- **Responsive Design:** Optimized for different screen sizes and devices (320px, 640px, 1200px, 1440px)
+- **Smart Filtering & Search:** Find wines by multiple parameters such as wine type, country, price, purpose, category and mood, as well as via search queries
+- **Sorting Options:** Sort wines by price or alphabetically
+- **Shopping Cart:** Add wines to the cart and view the total cost of selected items
+- **Client-Side Navigation:** Smooth navigation between pages using React Router with URL parameter support
+- **Pagination:** Easy navigation through large lists of wines with adjustable items per page
+- **Sticky Header & Scroll to Top:** Improved usability with persistent navigation and quick return to the top of the page
+- **Loaders:** Visual indicators during data loading for a better user experience.

@@ -1,0 +1,14 @@
+@import '../../styles/main';
+
+.icon {
+  display: block;
+  height: 16px;
+  width: 16px;
+
+  @include hover(transform, scale(1.2));
+
+  @include on-desktop {
+    height: 22px;
+    width: 22px;
+  }
+}

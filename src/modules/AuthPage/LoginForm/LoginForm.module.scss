@@ -1,0 +1,150 @@
+@import '../../shared/styles/main.scss';
+
+.form {
+  width: 100%;
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 32px;
+  }
+
+  &__field {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    position: absolute;
+    top: -7px;
+    left: 12px;
+
+    padding: 0 6px;
+    background-color: $page-bg-color;
+
+    font-size: 12px;
+    font-weight: 500;
+    color: #777;
+
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px 16px 14px;
+    border-radius: 24px;
+    border: 1px solid #ccc;
+
+    @extend %body-text-14;
+
+    font-size: 16px;
+
+    transition:
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+
+    &:hover {
+      border-color: #999;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $main-color;
+    }
+
+    &:focus ~ .form__label {
+      color: $main-color;
+    }
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px $page-bg-color inset;
+      -webkit-text-fill-color: $main-color;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+
+  &__input-error {
+    border-color: #e53935;
+
+    & ~ .form__label {
+      color: #e53935;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 23px;
+    background-color: $main-color;
+    color: $page-bg-color;
+
+    @extend %body-text-14;
+
+    font-size: 16px;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease,
+      border-color 0.4s ease;
+
+    &:hover {
+      background-color: $page-bg-color;
+      color: $main-color;
+      border-color: $main-color;
+    }
+  }
+
+  &__text {
+    margin-top: 16px;
+    text-align: center;
+
+    @extend %body-text-14;
+  }
+
+  &__description {
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: justify;
+  }
+
+  &__link {
+    border: none;
+
+    @extend %body-text-14;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    @include hover(color, $accent-color);
+  }
+
+  &__error {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #e53935;
+  }
+
+  &__password {
+    position: relative;
+  }
+
+  &__eye {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  &__forgot {
+    margin-bottom: 16px;
+    text-align: right;
+  }
+}

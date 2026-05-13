@@ -1,0 +1,48 @@
+@import '../../shared/styles/main.scss';
+
+.auth {
+  &__wrapper {
+    margin-block: 24px 64px;
+  
+    @include page-grid;
+  
+    @include content-padding-inline;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px 80px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    grid-column: 1 / -1;
+
+    margin-bottom: 20px;
+
+    @include on-desktop {
+      grid-column: 1 / 10;
+      margin-bottom: 0;
+    }
+  }
+
+  &__image {
+    height: 350px;
+    background-image: url('/images/auth-image.png');
+    background-size: cover;
+    background-position: center;
+
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      height: 480px;
+      grid-column: 12 / -1;
+    }
+  }
+}

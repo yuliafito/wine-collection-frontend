@@ -1,0 +1,39 @@
+@import '../../../shared/styles/main.scss';
+
+.filters {
+  grid-column: 1 / -1;
+  padding-right: 0;
+
+  @include on-desktop {
+    grid-column: 1 / 6;
+    padding-right: 16px;
+
+    border-right: 1px solid #eee;
+  }
+
+  &__section {
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    font-family: $main-font;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__subtitle {
+    margin-bottom: 8px;
+    font-family: $main-font;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+}

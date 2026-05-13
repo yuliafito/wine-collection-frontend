@@ -1,0 +1,19 @@
+@import './reset';
+@import './variables';
+@import './mixins';
+@import './extends';
+
+:root {
+  --header-height: 78px;
+}
+
+@include on-desktop {
+  :root {
+    --header-height: 110px;
+  }
+}
+
+body {
+  background-color: $page-bg-color;
+  font-family: $main-font;
+}

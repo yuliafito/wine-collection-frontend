@@ -1,0 +1,46 @@
+@import '../shared/styles/main.scss';
+
+.account {
+  &__wrapper {
+    margin-bottom: 56px;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__layout {
+    @include page-grid;
+
+    gap: 32px;
+    margin-top: 32px;
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__content {
+    grid-column: 1 / -1;
+
+    padding: 24px;
+    background-color: $page-bg-color;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+
+    @include on-desktop {
+      grid-column: 7 / -1;
+      padding: 32px;
+    }
+  }
+}

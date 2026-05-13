@@ -1,0 +1,94 @@
+@import '../shared/styles/main';
+
+.products {
+  &__wrapper {
+    margin-bottom: 64px;
+
+    @include content-padding-inline;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__header {
+    margin-bottom: 40px;
+
+    @extend %h1;
+
+    color: $main-color;
+  }
+
+  &__container {
+    @include page-grid;
+
+    gap: 32px;
+  }
+
+  &__drop-downs {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__drop-down {
+    width: 136px;
+
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @include on-desktop {
+      width: 176px;
+    }
+  }
+
+  &__items {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 6 / -1;
+    }
+  }
+
+  &__items-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+    
+    @include on-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    @extend %h2;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__selected-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  &__reset {
+    width: 80px;
+    height: 30px;
+    font-family: $main-font;
+    font-size: 14px;
+    border-radius: 15px;
+    background-color: #7a1e2d;
+    color: $page-bg-color;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,164 @@
+@import '../../styles/main';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  &__top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-block: 15px;
+
+    background-color: $header-bg-color;
+    box-shadow: 0 1px 0 0 $gray-elements-color;
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__list {
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    color: $main-color;
+    text-decoration: none;
+
+    @extend %link;
+
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      display: block;
+      height: 0.5px;
+      width: 100%;
+      background-color: $main-color;
+
+      transition: transform 0.4s;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &--active::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 16px;
+
+    @include on-desktop {
+      padding-left: 24px;
+    }
+  }
+
+  &__logo {
+    height: 48px;
+    width: 48px;
+
+    @include on-desktop {
+      height: 80px;
+      width: 100px;
+    }
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__icons-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    background-color: $header-bg-color;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__icon-wrapper {
+    position: relative;
+  }
+
+  &__counter {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+
+    border: 1px solid $page-bg-color;
+    border-radius: 50px;
+
+    @extend %counter;
+
+    background-color: $accent-color;
+    color: $page-bg-color;
+  }
+
+  &__icons-container {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+
+      padding-right: 16px;
+    }
+
+    @include on-desktop {
+      padding-right: 24px;
+    }
+  }
+
+  &__icon-container {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    background-color: $header-bg-color;
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+}

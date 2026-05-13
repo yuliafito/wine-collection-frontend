@@ -1,0 +1,108 @@
+@import '../../styles/main';
+
+.footer {
+  box-shadow: 0 -1px 0 0 $gray-elements-color;
+  background-color: $page-bg-color;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    padding-block: 32px;
+
+    @include content-padding-inline;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+
+    background-color: $header-bg-color;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__about-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 500px;
+  }
+
+  &__about-text {
+    @extend %body-text-14;
+
+    text-align: justify;
+  }
+
+  &__logo-wrapper {
+    display: flex;
+  }
+
+  &__logo {
+    height: 60px;
+    width: 60px;
+
+    @include on-desktop {
+      height: 100px;
+      width: 100px;
+    }
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    @extend %body-text-14;
+
+    @include on-desktop {
+      gap: 10px;
+    }
+  }
+
+  &__contact-link {
+    display: block;
+    text-decoration: none;
+    color: $main-color;
+
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__copyright {
+    @extend %body-text-14;
+  }
+
+  &__back-to-top {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+  }
+}
